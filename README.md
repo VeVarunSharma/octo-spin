@@ -4,6 +4,10 @@ A live raffle draw app for **GitHub Copilot Dev Days** events. Chapter leads can
 
 Built with Next.js, Tailwind CSS, and ✨ vibes.
 
+| Landing | Winner Drawn |
+|---------|-------------|
+| ![Landing page](public/screenshots/landing.png) | ![Winner drawn](public/screenshots/winner.png) |
+
 ## Quick Start
 
 ```bash
