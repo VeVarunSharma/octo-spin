@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎰 GitHub Copilot Dev Days — Raffle App
 
-## Getting Started
+A live raffle draw app for **GitHub Copilot Dev Days** events. Chapter leads can plug in their own attendee list and run a fun, animated raffle during their event.
 
-First, run the development server:
+Built with Next.js, Tailwind CSS, and ✨ vibes.
+
+## Quick Start
 
 ```bash
+# 1. Clone the repo
+git clone <repo-url> && cd raffle-app
+
+# 2. Install dependencies
+npm install
+
+# 3. Add your attendee data (see below)
+
+# 4. Run the app
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the raffle.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📋 Setting Up Your Attendee Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> **⚠️ Important:** The `data/` folder is gitignored. Never commit attendee data — it contains personal information (names, emails, GitHub handles).
 
-## Learn More
+### Step 1: Export from Luma
 
-To learn more about Next.js, take a look at the following resources:
+1. Go to your Luma event dashboard
+2. Export the guest list as CSV
+3. Save the CSV to `data/` for your reference (optional)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Step 2: Create `data/attendees.json`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a file at `data/attendees.json` with this format:
 
-## Deploy on Vercel
+```json
+[
+  {
+    "name": "Jane Doe",
+    "github": "janedoe",
+    "company": "Acme Corp"
+  },
+  {
+    "name": "John Smith",
+    "github": "NA",
+    "company": "Contoso Ltd"
+  }
+]
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Each attendee needs three fields:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Field     | Description                          | Notes                                      |
+|-----------|--------------------------------------|---------------------------------------------|
+| `name`    | Full name                            | Required                                    |
+| `github`  | GitHub username (without `@`)        | Use `"NA"`, `"none"`, or `""` if unknown    |
+| `company` | Company or organization              | Use `""` if unknown                         |
+
+> **Tip:** See [`attendees.example.json`](./attendees.example.json) in the project root for a working template. Copy it to `data/attendees.json` and replace with real data.
+
+### Converting Luma CSV → JSON
+
+The Luma CSV export includes columns like `name`, `What is your GitHub username?`, and `What company do you work for?`. You'll need to map these to the JSON format above.
+
+You can do this manually, with a script, or ask GitHub Copilot to help you write a quick converter!
+
+## 🎨 Customizing for Your Event
+
+Edit `src/app/page.tsx` to update:
+
+- **Event title** — change the `<h1>` text (line ~177)
+- **City/chapter** — change the subtitle `<p>` (line ~179)
+
+## Project Structure
+
+```
+raffle-app/
+├── data/                      # ⛔ Gitignored — your attendee data goes here
+│   └── attendees.json         # Your event's attendee list (create this)
+├── attendees.example.json     # ✅ Committed — template showing expected format
+├── src/app/
+│   ├── page.tsx               # Main raffle UI
+│   ├── globals.css            # Styles & animations
+│   └── layout.tsx             # App layout
+├── .gitignore                 # Ensures /data is never committed
+└── README.md                  # You are here
+```
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) — React framework
+- [Tailwind CSS](https://tailwindcss.com) — Styling
+- TypeScript — Type safety

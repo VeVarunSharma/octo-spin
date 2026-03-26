@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Mona Lisa Octocat",
+    "github": "octocat",
+    "company": "GitHub"
+  },
+  {
+    "name": "Copilot Bot",
+    "github": "copilot",
+    "company": "GitHub"
+  },
+  {
+    "name": "Ada Lovelace",
+    "github": "ada-lovelace",
+    "company": "Analytical Engines Inc"
+  },
+  {
+    "name": "Alan Turing",
+    "github": "alan-turing",
+    "company": "Bletchley Park Labs"
+  },
+  {
+    "name": "Grace Hopper",
+    "github": "grace-hopper",
+    "company": "US Navy Computing"
+  },
+  {
+    "name": "Linus Torvalds",
+    "github": "torvalds",
+    "company": "Linux Foundation"
+  },
+  {
+    "name": "Margaret Hamilton",
+    "github": "margaret-hamilton",
+    "company": "Apollo Space Program"
+  },
+  {
+    "name": "No GitHub User",
+    "github": "NA",
+    "company": "Example Corp"
+  },
+  {
+    "name": "Minimal Entry",
+    "github": "",
+    "company": ""
+  }
+]
