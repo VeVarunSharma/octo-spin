@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node -e \"const fs=require('fs'),p='data/attendees.json';if(!fs.existsSync(p)){fs.mkdirSync('data',{recursive:true});fs.copyFileSync('attendees.example.json',p);console.log('Copied attendees.example.json → data/attendees.json')}\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

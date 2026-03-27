@@ -92,6 +92,37 @@ raffle-app/
 └── README.md                  # You are here
 ```
 
+## ☁️ Deploying to Azure
+
+This app ships with a GitHub Actions workflow that deploys to **Azure App Service** on every push to `main`.
+
+### Step 1: Create an Azure App Service
+
+1. In the [Azure Portal](https://portal.azure.com), create a **Web App**
+2. Runtime stack: **Node 20 LTS**
+3. OS: **Linux**
+
+### Step 2: Get the Publish Profile
+
+1. Go to your App Service → **Deployment Center** → **Manage publish profile**
+2. Download the `.PublishSettings` file
+3. Copy its entire XML content
+
+### Step 3: Add GitHub Secrets
+
+In your repo → **Settings → Secrets and variables → Actions**, add:
+
+| Secret | Value |
+|--------|-------|
+| `AZURE_WEBAPP_NAME` | Your App Service name (e.g., `octo-spin`) |
+| `AZURE_WEBAPP_PUBLISH_PROFILE` | The full XML from the `.PublishSettings` file |
+
+### Step 4: Push to `main`
+
+The workflow (`.github/workflows/azure-deploy.yml`) triggers automatically on push to `main`. You can also trigger it manually via the **Actions** tab.
+
+> **Note:** The build uses a `prebuild` script that copies `attendees.example.json` → `data/attendees.json` if no real data exists. This means CI builds always succeed with demo data. To use real attendee data in production, upload `data/attendees.json` to your App Service via SSH/FTPS, or rebuild with the file present.
+
 ## Tech Stack
 
 - [Next.js](https://nextjs.org) — React framework
