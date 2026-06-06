@@ -60,8 +60,12 @@ export default function Home() {
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const audioContextRef = useRef<AudioContext | null>(null);
 
+  const attendeeKey = (a: Attendee) =>
+    a.github && !["NA", "none", "N/A", "n/a", ""].includes(a.github)
+      ? `gh:${a.github}`
+      : `name:${a.name}`;
   const remaining = attendees.filter(
-    (a) => !previousWinners.some((w) => w.github === a.github)
+    (a) => !previousWinners.some((w) => attendeeKey(w) === attendeeKey(a))
   );
 
   const playTick = useCallback(() => {
@@ -174,9 +178,9 @@ export default function Home() {
           <GitHubLogo className="w-10 h-10 text-white" />
         </div>
         <h1 className="text-3xl md:text-5xl font-bold text-center bg-gradient-to-r from-[#58a6ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
-          GitHub Copilot Dev Days
+          GitHub Copilot Dev Days Canada
         </h1>
-        <p className="text-[#8b949e] text-lg">Edmonton 🇨🇦 — Live Raffle Draw</p>
+        <p className="text-[#8b949e] text-lg">Canada 🇨🇦 — Live Raffle Draw</p>
         <div className="flex gap-4 text-sm text-[#8b949e]">
           <span className="gh-card px-3 py-1">
             👥 {attendees.length} registered
@@ -199,9 +203,12 @@ export default function Home() {
               <p className="text-2xl md:text-4xl font-bold text-[#8b949e]">
                 {shuffleDisplay.name}
               </p>
-              <p className="text-lg text-[#6e7681] mt-2">
-                @{shuffleDisplay.github}
-              </p>
+              {shuffleDisplay.github &&
+                !["NA", "none", "N/A", "n/a"].includes(shuffleDisplay.github) && (
+                  <p className="text-lg text-[#6e7681] mt-2">
+                    @{shuffleDisplay.github}
+                  </p>
+                )}
             </div>
           )}
 
@@ -289,7 +296,7 @@ export default function Home() {
           <div className="grid gap-2">
             {[...previousWinners].reverse().map((w, i) => (
               <div
-                key={w.github + i}
+                key={attendeeKey(w) + i}
                 className="gh-card px-4 py-3 flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
