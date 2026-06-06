@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "GitHub Copilot Dev Days — Raffle Draw 🎉",
-  description: "Live raffle draw for GitHub Copilot Dev Days Edmonton",
+  description: "Live raffle draw for GitHub Copilot Dev Days Canada",
 };
 
 export default function RootLayout({
