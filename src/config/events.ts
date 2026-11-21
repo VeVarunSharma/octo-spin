@@ -1,5 +1,9 @@
 export type EventId = "universe" | "dev-days" | "build-days";
 
+// next/image does not prefix basePath on src, so static assets need it added (e.g. GitHub Pages).
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const asset = (path: string) => `${basePath}${path}`;
+
 export interface EventConfig {
   id: EventId;
   route: `/${string}`;
@@ -23,7 +27,7 @@ export const events: Record<EventId, EventConfig> = {
     route: "/universe",
     name: "GitHub Universe on the Road",
     tagline: "Vancouver / In-person raffle",
-    banner: "/universe-26-banner.png",
+    banner: asset("/universe-26-banner.png"),
     bannerAlt: "Universe '26 with a colorful row of Octocats",
     title: "Universe '26 Vancouver — In-person Raffle",
     description: "GitHub Universe on the Road Vancouver — live raffle for in-person registrants",
@@ -35,7 +39,7 @@ export const events: Record<EventId, EventConfig> = {
     route: "/dev-days",
     name: "GitHub Copilot Dev Days",
     tagline: "Canada / Live raffle draw",
-    banner: "/dev-days-banner.png",
+    banner: asset("/dev-days-banner.png"),
     bannerAlt: "GitHub Copilot Dev Days Canada banner with the Copilot mascot",
     title: "GitHub Copilot Dev Days Canada — Raffle",
     description: "GitHub Copilot Dev Days Canada — live raffle for checked-in attendees",
@@ -47,7 +51,7 @@ export const events: Record<EventId, EventConfig> = {
     route: "/build-days",
     name: "Microsoft + GitHub Build Days",
     tagline: "In-account workshop / Live raffle",
-    banner: "/build-days-banner.png",
+    banner: asset("/build-days-banner.png"),
     bannerAlt: "Microsoft and GitHub Build Days banner with colorful squares and branch lines",
     title: "Build Days — Raffle",
     description: "Microsoft + GitHub Build Days — live raffle for workshop attendees",

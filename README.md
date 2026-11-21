@@ -4,6 +4,8 @@ A live raffle draw app for **GitHub Copilot Dev Days** events. Chapter leads can
 
 Built with Next.js, Tailwind CSS, and ✨ vibes.
 
+**Live preview (demo data):** https://vevarunsharma.github.io/octo-spin/
+
 ## Views
 
 Octo Spin has three saved event views. Open `/` to pick one.
@@ -95,6 +97,15 @@ You can do this manually, with a script, or ask GitHub Copilot to help you write
 ## 🎨 Customizing for Your Event
 
 Edit `src/config/events.ts` to change each view's title, tagline, banner, labels, and the Build Days `customerName`. View-specific layouts live in `src/components/*-raffle.tsx`; the shared draw logic is in `src/components/raffle.tsx`.
+
+## 🚀 Deploying to GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds a static export and deploys it with a [custom GitHub Pages workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). It runs on every push to `main`, or by hand from the Actions tab.
+
+- One-time setup: **Settings → Pages → Source: GitHub Actions**.
+- `data/` is gitignored, so the public site always uses the demo attendees. Real lists stay on your machine.
+- The workflow sets `NEXT_PUBLIC_BASE_PATH` (for example `/octo-spin`), so links and banners work under the repo path.
+- To test the Pages build locally, run `$env:NEXT_PUBLIC_BASE_PATH='/octo-spin'; npm run build -- --webpack`. Output goes to `out/`.
 
 ## Project Structure
 
