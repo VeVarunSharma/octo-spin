@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Kai Park",
+    "github": "kai-park-demo",
+    "company": "Platform Engineering"
+  },
+  {
+    "name": "Nora Garcia",
+    "github": "nora-garcia-demo",
+    "company": "Data & AI"
+  },
+  {
+    "name": "Theo Bauer",
+    "github": "theo-bauer-demo",
+    "company": "Mobile"
+  },
+  {
+    "name": "Ines Chen",
+    "github": "ines-chen-demo",
+    "company": "Cloud Ops"
+  },
+  {
+    "name": "Liam Haddad",
+    "github": "liam-haddad-demo",
+    "company": "Security"
+  },
+  {
+    "name": "Sofia Reyes",
+    "github": "",
+    "company": "Payments"
+  },
+  {
+    "name": "Diego Okafor",
+    "github": "diego-okafor-demo",
+    "company": "Developer Experience"
+  },
+  {
+    "name": "Elena Ito",
+    "github": "elena-ito-demo",
+    "company": "Web Frontend"
+  },
+  {
+    "name": "Sam Yilmaz",
+    "github": "sam-yilmaz-demo",
+    "company": "Platform Engineering"
+  },
+  {
+    "name": "Ava Kowalski",
+    "github": "ava-kowalski-demo",
+    "company": "Data & AI"
+  },
+  {
+    "name": "Lucas Larsen",
+    "github": "lucas-larsen-demo",
+    "company": "Mobile"
+  },
+  {
+    "name": "Leila Lopez",
+    "github": "",
+    "company": "Cloud Ops"
+  },
+  {
+    "name": "Ravi Kim",
+    "github": "ravi-kim-demo",
+    "company": "Security"
+  },
+  {
+    "name": "Mei Costa",
+    "github": "mei-costa-demo",
+    "company": "Payments"
+  },
+  {
+    "name": "Tariq Patel",
+    "github": "tariq-patel-demo",
+    "company": "Developer Experience"
+  },
+  {
+    "name": "Priya Silva",
+    "github": "priya-silva-demo",
+    "company": "Web Frontend"
+  },
+  {
+    "name": "Owen Ahmed",
+    "github": "owen-ahmed-demo",
+    "company": "Platform Engineering"
+  },
+  {
+    "name": "Isla Martin",
+    "github": "",
+    "company": "Data & AI"
+  },
+  {
+    "name": "Hugo Murphy",
+    "github": "hugo-murphy-demo",
+    "company": "Mobile"
+  },
+  {
+    "name": "Rosa Fischer",
+    "github": "rosa-fischer-demo",
+    "company": "Cloud Ops"
+  },
+  {
+    "name": "Ethan Tremblay",
+    "github": "ethan-tremblay-demo",
+    "company": "Security"
+  },
+  {
+    "name": "Hana Mensah",
+    "github": "hana-mensah-demo",
+    "company": "Payments"
+  },
+  {
+    "name": "Felix Brown",
+    "github": "felix-brown-demo",
+    "company": "Developer Experience"
+  },
+  {
+    "name": "Grace Rossi",
+    "github": "",
+    "company": "Web Frontend"
+  }
+]
