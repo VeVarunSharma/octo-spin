@@ -20,9 +20,15 @@ Each view reads its own private list from `data/<view>.json` (`data/universe.jso
 - Pages are built statically. After you change a data file, rebuild (`npm run build -- --webpack`) or use `npm run dev`.
 - Run a local preview with `npm run dev -- --webpack --port 3124`.
 
-| Landing | Winner Drawn |
-|---------|-------------|
-| ![Landing page](public/screenshots/landing.png) | ![Winner drawn](public/screenshots/winner.png) |
+### Screenshots
+
+**Home picker (`/`)**
+
+![Home picker](public/screenshots/home.png)
+
+| Universe on the Road (`/universe`) | Dev Days (`/dev-days`) | Build Days (`/build-days`) |
+|---|---|---|
+| ![Universe view](public/screenshots/universe.png) | ![Dev Days view](public/screenshots/dev-days.png) | ![Build Days view](public/screenshots/build-days.png) |
 
 ## Quick Start
 
