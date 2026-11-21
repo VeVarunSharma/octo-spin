@@ -4,6 +4,22 @@ A live raffle draw app for **GitHub Copilot Dev Days** events. Chapter leads can
 
 Built with Next.js, Tailwind CSS, and ✨ vibes.
 
+## Views
+
+Octo Spin has three saved event views. Open `/` to pick one.
+
+| Route | View | Look |
+|-------|------|------|
+| `/universe` | GitHub Universe on the Road | Universe '26 charcoal, green, and violet theme (Vancouver) |
+| `/dev-days` | GitHub Copilot Dev Days | Original GitHub-dark look with the Dev Days banner |
+| `/build-days` | In-account Build Days | Microsoft × GitHub look with the Build Days banner |
+
+Each view reads its own private list from `data/<view>.json` (`data/universe.json`, `data/dev-days.json`, `data/build-days.json`). If that file is missing, the view uses demo data from `src/data/demo/<view>.json` and shows a "Demo data" badge.
+
+- Set the Build Days customer name in `customerName` in `src/config/events.ts`.
+- Pages are built statically. After you change a data file, rebuild (`npm run build -- --webpack`) or use `npm run dev`.
+- Run a local preview with `npm run dev -- --webpack --port 3124`.
+
 | Landing | Winner Drawn |
 |---------|-------------|
 | ![Landing page](public/screenshots/landing.png) | ![Winner drawn](public/screenshots/winner.png) |
@@ -35,9 +51,9 @@ Open [http://localhost:3000](http://localhost:3000) to see the raffle.
 2. Export the guest list as CSV
 3. Save the CSV to `data/` for your reference (optional)
 
-### Step 2: Create `data/attendees.json`
+### Step 2: Create `data/<view>.json`
 
-Create a file at `data/attendees.json` with this format:
+Create `data/universe.json`, `data/dev-days.json`, or `data/build-days.json` with this format:
 
 ```json
 [
@@ -62,7 +78,7 @@ Each attendee needs three fields:
 | `github`  | GitHub username (without `@`)        | Use `"NA"`, `"none"`, or `""` if unknown    |
 | `company` | Company or organization              | Use `""` if unknown                         |
 
-> **Tip:** See [`attendees.example.json`](./attendees.example.json) in the project root for a working template. Copy it to `data/attendees.json` and replace with real data.
+> **Tip:** See [`attendees.example.json`](./attendees.example.json) in the project root for a working template. Copy it to `data/<view>.json` and replace with real data.
 
 ### Converting Luma CSV → JSON
 
@@ -72,24 +88,22 @@ You can do this manually, with a script, or ask GitHub Copilot to help you write
 
 ## 🎨 Customizing for Your Event
 
-Edit `src/app/page.tsx` to update:
-
-- **Event title** — change the `<h1>` text (line ~177)
-- **City/chapter** — change the subtitle `<p>` (line ~179)
+Edit `src/config/events.ts` to change each view's title, tagline, banner, labels, and the Build Days `customerName`. View-specific layouts live in `src/components/*-raffle.tsx`; the shared draw logic is in `src/components/raffle.tsx`.
 
 ## Project Structure
 
 ```
 raffle-app/
-├── data/                      # ⛔ Gitignored — your attendee data goes here
-│   └── attendees.json         # Your event's attendee list (create this)
-├── attendees.example.json     # ✅ Committed — template showing expected format
-├── src/app/
-│   ├── page.tsx               # Main raffle UI
-│   ├── globals.css            # Styles & animations
-│   └── layout.tsx             # App layout
-├── .gitignore                 # Ensures /data is never committed
-└── README.md                  # You are here
+├── data/                      # ⛔ Gitignored — real attendee lists (<view>.json)
+├── attendees.example.json     # ✅ Template showing expected format
+├── public/                    # Event banners
+├── src/
+│   ├── app/                   # Home picker and /universe, /dev-days, /build-days routes
+│   ├── components/            # Shared raffle stage and per-view layouts
+│   ├── config/events.ts       # Per-view text and settings
+│   ├── data/demo/             # ✅ Committed fake demo attendees
+│   └── lib/                   # Attendee helpers and data loader
+└── README.md
 ```
 
 ## Tech Stack
